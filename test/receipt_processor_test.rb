@@ -31,6 +31,12 @@ class MusicnotesTest < Minitest::Test
     assert_equal 200, last_response.status
   end
 
+  def test_payload_present_but_not_valid_json
+    post "/receipts/process", "test".to_json,
+         "CONTENT_TYPE" => "application/json"
+    assert_equal 400, last_response.status
+  end
+
   def test_target_payload_json
     post "/receipts/process", TEST_PAYLOAD_TARGET.to_json,
          "CONTENT_TYPE" => "application/json"

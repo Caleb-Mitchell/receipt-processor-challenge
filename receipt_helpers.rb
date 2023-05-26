@@ -1,5 +1,5 @@
 def receipt_invalid?(receipt)
-  return true unless receipt.instance_of?(Hash) || !receipt.nil?
+  receipt == "" || !JSON.parse(receipt).is_a?(Hash)
 end
 
 def score_retail_name(name)

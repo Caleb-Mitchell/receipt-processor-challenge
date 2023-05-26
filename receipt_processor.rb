@@ -1,10 +1,6 @@
 require "securerandom"
 require "sinatra"
 
-# TODO: write readme (assumptions, instructions, requirements and how they met)
-# TODO: docker file?
-# TODO: Heroku as a backup (test it)
-
 require_relative "receipt_helpers"
 
 SECRET = SecureRandom.hex(32)
@@ -21,13 +17,12 @@ end
 # submit receipt as payload, save id and point total in memory, return id
 post "/receipts/process" do
   request_body = request.body.read
-  request_payload = request_body.empty? ? nil : JSON.parse(request_body)
 
-  if receipt_invalid?(request_payload)
+  if receipt_invalid?(request_body)
     status 400
   else
     uuid = SecureRandom.uuid
-    point_total = total_receipt_points(request_payload)
+    point_total = total_receipt_points(JSON.parse(request_body))
     session[uuid] = point_total
 
     status 200
