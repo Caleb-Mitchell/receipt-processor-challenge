@@ -4,8 +4,8 @@
 ## Description
 
 - An implementation of a receipt processor webservice, as described by the
-[receipt-processor-challenge](https://github.com/fetch-rewards/receipt-processor-challenge)
-issued by **Fetch**.
+  [receipt-processor-challenge](https://github.com/fetch-rewards/receipt-processor-challenge)
+  issued by **Fetch**.
 
 - I chose to implement this using Ruby and the web framework Sinatra. With
   little configuration, Sinatra can store the necessary data on the server side
@@ -19,7 +19,7 @@ issued by **Fetch**.
 
 - First, after cloning this project repository, be sure to navigate into the
   project directory with `cd receipt-processor-challenge`, and then run the
-  following commands to start the webservice, listening on port 4567 as is the
+  following commands to build and start the webservice, listening on port 4567 as is the
   default for Sinatra applications:
 
 ```
