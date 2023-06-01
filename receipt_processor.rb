@@ -1,7 +1,7 @@
 require "securerandom"
 require "sinatra"
 
-require_relative "receipt_helpers"
+require_relative "receipt"
 
 SECRET = SecureRandom.hex(32)
 
@@ -16,13 +16,13 @@ end
 
 # submit receipt as payload, save id and point total in memory, return id
 post "/receipts/process" do
-  request_body = request.body.read
+  receipt = Receipt.new(request.body.read)
 
-  if receipt_invalid?(request_body)
+  if receipt.invalid?
     status 400
   else
     uuid = SecureRandom.uuid
-    point_total = total_receipt_points(JSON.parse(request_body))
+    point_total = receipt.score_receipt
     session[uuid] = point_total
 
     status 200
