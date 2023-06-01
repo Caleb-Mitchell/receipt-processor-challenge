@@ -1,7 +1,7 @@
 require "securerandom"
 require "sinatra"
 
-require_relative "receipt"
+require_relative "lib/receipt"
 
 SECRET = SecureRandom.hex(32)
 
