@@ -22,8 +22,7 @@ post "/receipts/process" do
     status 400
   else
     uuid = SecureRandom.uuid
-    point_total = receipt.score_receipt
-    session[uuid] = point_total
+    session[uuid] = receipt.score_receipt
 
     status 200
     headers["Content-Type"] = "application/json"
