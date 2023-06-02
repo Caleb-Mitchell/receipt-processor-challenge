@@ -9,7 +9,7 @@ require "rack/test"
 require_relative "../receipt_processor"
 require_relative "sample_test_data"
 
-class MusicnotesTest < Minitest::Test
+class ReceiptProcessorTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
